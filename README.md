@@ -107,11 +107,11 @@ If not set differently, the outputs of the evaluation will be saved in the worki
 ## Citation
 If you use this code or data in your research, please cite the following:
 
-@article{comparison2024,
-  title={Comparison of generative learning methods for turbulence modeling},
-  author={Drygala, Claudia and Ross, Edmund and di Mare, Francesca and Gottschalk, Hanno},
-  journal={arXiv preprint arXiv:2411.16417},
-  year={2024}
+@article{comparison2024,    
+  title={Comparison of generative learning methods for turbulence modeling},  
+  author={Drygala, Claudia and Ross, Edmund and di Mare, Francesca and Gottschalk, Hanno},  
+  journal={arXiv preprint arXiv:2411.16417},  
+  year={2024}  
 }
 
 ## Contact
