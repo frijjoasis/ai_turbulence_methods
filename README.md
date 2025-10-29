@@ -16,14 +16,17 @@ The repo consists of four folders containing the scripts for the respective gene
 ```plaintext
 ai_turbulence_methods/
 ├── dcgan_karman/
+│   ├── requirements.txt
 │   ├── options/
 |   |   ├── inference_options.py
 |   |   ├── train_options.py
-│   └── dcgan_inference_piv.py
-│   └── dcgan_inference_les.py
-│   └── dcgan_train_piv.py
-│   └── dcgan_train_les.py
+│   ├── dcgan_inference_piv.py
+│   ├── dcgan_inference_les.py
+│   ├── dcgan_train_piv.py
+│   ├── dcgan_train_les.py
+│   └── utils.py
 ├── diffusion_karman/
+│   ├── requirements.txt
 │   ├── config.json
 │   ├── dataset.py
 │   ├── distribute.py
@@ -34,6 +37,7 @@ ai_turbulence_methods/
 │   ├── trainer.py
 │   └── util.py
 ├── vae_karman/
+│   ├── requirements.txt
 │   ├── params.json
 │   ├── distribute.py
 │   ├── model.py
