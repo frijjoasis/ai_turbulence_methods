@@ -55,6 +55,7 @@ ai_turbulence_methods/
 ## How to - Training the models
 
 The considered generative models each have their own training routines, as described below. The actual parameter settings for all models on both datasets are provided in the paper.
+To train the models, it is necessary to create virtual environments in the usual way, e.g. using Miniconda or `venv` (`python -m venv venv_name`). After activating the virtual environment (e.g. using `source path_to_venv_name/bin/activate`), the required packages can be installed using the provided requirements file by running `pip install -r requirements.txt`.
 
 ### DCGAN
 To train the DCGAN, run `python dcgan_train_les.py` or `python dcgan_train_piv.py` when using the LES or PIV data, respectively.
