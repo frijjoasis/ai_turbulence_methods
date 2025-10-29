@@ -47,7 +47,8 @@ ai_turbulence_methods/
 │   └── vae-train.py
 ├── evaluations/
 │   ├── evaluation_les.py
-│   └── evaluation_ilmenau.py
+│   ├── evaluation_piv.py
+│   └── postprocessing_ddpm_vae.py
 └── README.md
 ```
 
@@ -79,10 +80,17 @@ Run `python dcgan_inference_les.py` or `python dcgan_inference_piv.py` when the 
 
 As in the case of DCGAN training, the checkpoint paths, generator models, and other parameters can be customized within the options script `inference_options.py` or directly in the command line. All customizable parameters are also explained in the options script.
 
-If not set differently, the outputs of the inference will be saved in the working directory in the folder `inference_output/experiment_name`.
+If not set differently, the outputs of the inference will be saved in the working directory in the folder `inference_output/experiment_name`. For models trained on the LES dataset, the outputs are a desired number of grayscale images. For models trained on the PIV dataset, the outputs consist of grayscale images for the two channels *u* and *v*, respectively, and a `.pt` file called `generated`, which contains the exact values of the generated samples.
 
 ### DDPM
 
 ### VAE
 
 ## Evaluations
+After generating new samples with the trained models, it’s time to perform the physics-based evaluations introduced in our paper. To ensure fairness, the number of compared images should be the same for the LES/PIV, DCGAN-, DDPM-, or VAE-generated data.  
+
+For the LES dataset, the grayscale images are used for the evaluation. In the case of the PIV dataset, the exact values from the `.pt` files are loaded. To run the scripts, adjust the file paths in the `__main__` part below the comment  
+`# Set the data paths`. Be cautious that the samples of all models (DCGAN, DDPM, VAE) and the training data (LES/PIV) are in the same domain, as the images are normalized during training.  
+
+Attention must be paid in the case of the PIV dataset: The DCGAN-generated samples are denormalized to the original domain already at inference time. For the DDPM and VAE models, this has to be done through postprocessing. Run `postprocessing_ddpm_vae.py` with your customized setup (search for the comment `# CUSTOMIZE`) and use the resulting denormalized samples, which are in the original domain, for the evaluation.
+
