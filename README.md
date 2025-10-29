@@ -88,9 +88,12 @@ If not set differently, the outputs of the inference will be saved in the workin
 
 ## Evaluations
 After generating new samples with the trained models, it’s time to perform the physics-based evaluations introduced in our paper. To ensure fairness, the number of compared images should be the same for the LES/PIV, DCGAN-, DDPM-, or VAE-generated data.  
+The evaluation areas depicted in the paper can be choosen and changed by setting the `fluid_ranges`-parameter.
 
 For the LES dataset, the grayscale images are used for the evaluation. In the case of the PIV dataset, the exact values from the `.pt` files are loaded. To run the scripts, adjust the file paths in the `__main__` part below the comment  
 `# Set the data paths`. Be cautious that the samples of all models (DCGAN, DDPM, VAE) and the training data (LES/PIV) are in the same domain, as the images are normalized during training.  
 
 Attention must be paid in the case of the PIV dataset: The DCGAN-generated samples are denormalized to the original domain already at inference time. For the DDPM and VAE models, this has to be done through postprocessing. Run `postprocessing_ddpm_vae.py` with your customized setup (search for the comment `# CUSTOMIZE`) and use the resulting denormalized samples, which are in the original domain, for the evaluation.
+
+If not set differently, the outputs of the evaluation will be saved in the working directory in the folder `evaluation_output`.
 
