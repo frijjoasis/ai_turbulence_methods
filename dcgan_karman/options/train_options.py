@@ -22,6 +22,7 @@ class TrainOptions():
         parser.add_argument('--gpu_id', type=int, default=0, help='gpu id to run the training on')
         parser.add_argument('--experiment_name', type=str, default='dcgan', help='name of the experiment under which the results will be saved')
         parser.add_argument('--dataset_dir', required=True, type=str, default="\home\.datasets", help='the directory to the dataset \path_to\data_folder. Datasets should have the following structure: data_folder->data_subfolder->images')
+        parser.add_argument('--outer_key', type=int, default=0, help='Choose which dataset to use, when using the ilmenau dataset, possible values: 0-8')
         parser.add_argument('--resize_img', type=int, default=512, help='size k to which the input image should be resized. DCGAN is trained on k x k images')
         parser.add_argument('--batch_size', type=int, default=20, help='the batch size used during training')
         parser.add_argument('--lr', type=int, default=0.0002, help='the learning rate')
