@@ -9,6 +9,9 @@ The experiments are performed on three datasets obtained by LES and PIV and are 
     * Contains images of nine different test cases (2V2H, 2V4H, 2V8H, 4V2H, 4V4H, 4V8H, 6V2H, 6V4H, 6V8H) saved in .mat-file format.
     * Each test case has 3,000 images of resolution 138 $\times$ 231.
     * The test cases considered in our paper are 2V8H and 4V2H.
+    * Attention: For the experiments, the data was provided in a `.pt` file format. It is possible either to work directly with the original format and adjust the data loader in the generative model scripts, or to run the Python script `mat2pt.py` in the folder `piv_utils` to obtain a converted `.pt` file.  
+    * To get an overview of the data and verify that the conversion was successful, run the script `piv_data_structure.py`, also located in `piv_utils`.
+
 
 ## Repository Structure
 The repo consists of four folders containing the scripts for the respective generative models (DCGAN, DDPM, VAE) and the computation of the evaluations:
