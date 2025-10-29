@@ -52,6 +52,9 @@ ai_turbulence_methods/
 │   ├── evaluation_les.py
 │   ├── evaluation_piv.py
 │   └── postprocessing_ddpm_vae.py
+├── piv_utils/
+│   ├── mat2pt.py
+│   └── piv_data_structure.py
 └── README.md
 ```
 
@@ -101,3 +104,15 @@ Attention must be paid in the case of the PIV dataset: The DCGAN-generated sampl
 
 If not set differently, the outputs of the evaluation will be saved in the working directory in the folder `evaluation_output`.
 
+## Citation
+If you use this code or data in your research, please cite the following:
+
+@article{comparison2024,
+  title={Comparison of generative learning methods for turbulence modeling},
+  author={Drygala, Claudia and Ross, Edmund and di Mare, Francesca and Gottschalk, Hanno},
+  journal={arXiv preprint arXiv:2411.16417},
+  year={2024}
+}
+
+## Contact
+For questions, suggestions, or collaborations, feel free to reach out: {drygala, ross}@math.tu-berlin.de
