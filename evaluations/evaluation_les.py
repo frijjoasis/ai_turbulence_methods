@@ -1,4 +1,4 @@
-# Evaluations published in ... (Drygala, Ross, Di Mare, Gottschalk)
+# Physics-based evaluations for LES data
 
 import numpy as np
 import os
