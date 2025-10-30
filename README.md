@@ -76,7 +76,13 @@ If not set differently, the outputs of the training (image progress, models, and
 
 ### DDPM
 
+The DDPM model is trainable by running `python main.py --experiment_name <name>`. `experiment_name` is the only required argument. All other parameters, such as dataset path, checkpoint path, number of epochs, batch size, etc., can be set in the `config.json` file. The parameters are explained in the file `params.py`, and can also be overridden in the command line.
+Sampling is done through running `python sample.py --experiment_name <name> --model <model> --sample_size <N>`, where `model` is the checkpoint to be loaded, and `<N>` is the desired number of samples to generate. Again, all other parameters can be set in the `config.json` file or overridden in the command line.
+
 ### VAE
+
+The VAE model can be trained by running `python vae-train.py --experiment_name <name>`. `experiment_name` is the only required argument. All other parameters, such as dataset path, checkpoint path, number of epochs, batch size, etc., can be set in the `params.json` file. The parameters are explained in the file `params.py`, and can also be overridden in the command line.
+Sampling is done through running `python vae-sample.py --experiment_name <name> --model <model> --sample_size <N>`, where `model` is the checkpoint to be loaded, and `<N>` is the desired number of samples to generate. Again, all other parameters can be set in the `params.json` file or overridden in the command line.
 
 ## How to - Using the trained models
 
@@ -113,6 +119,10 @@ If you use this code or data in your research, please cite the following:
   journal={arXiv preprint arXiv:2411.16417},  
   year={2024}  
 }
+
+## License
+
+The license file `LICENSE` in this repository contains the terms under which the code is distributed. This applies to all files in this repository unless otherwise noted.
 
 ## Contact
 For questions, suggestions, or collaborations, feel free to reach out: {drygala, ross}@math.tu-berlin.de

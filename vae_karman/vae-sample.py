@@ -44,28 +44,28 @@ def sample(rank, world_size, args, experiment_path):
                 args.batch_size = remainder
             print(f'[{args.experiment_name}] Starting run [{i + 1}/{runs}] of size {args.batch_size}')
             sampled_images = ddp_model.module.sample(args.batch_size, rank)
-            # current_datetime = datetime.now()
-            #
+            current_datetime = datetime.now()
+
             # Format the date and time for a filename (e.g., YYYY-MM-DD_HH-MM-SS)
-            # formatted_datetime = current_datetime.strftime('%Y-%m-%d_%H-%M-%S')
-            #
-            # for j in range(args.batch_size):
-            #     sample_name = f'sample_{j}_{formatted_datetime}.png'
-            #     img = sampled_images[j].detach().cpu().numpy()
-            #     img = np.squeeze(img, axis=0)  # Remove channels dimension
-            #     img = (img * 255).astype(np.uint8)  # Un-normalise and convert to int
-            #
-            #     new_size = (850, 600)
-            #     img_rescaled = Image.fromarray(img)  # Convert numpy array to PIL image
-            #     img_rescaled = img_rescaled.resize(new_size)  # Resize the image
-            #     img_rescaled = np.array(img_rescaled)
+            formatted_datetime = current_datetime.strftime('%Y-%m-%d_%H-%M-%S')
+
+            for j in range(args.batch_size):
+                sample_name = f'sample_{j}_{formatted_datetime}.png'
+                img = sampled_images[j].detach().cpu().numpy()
+                img = np.squeeze(img, axis=0)  # Remove channels dimension
+                img = (img * 255).astype(np.uint8)  # Un-normalise and convert to int
+
+                new_size = (850, 600)
+                img_rescaled = Image.fromarray(img)  # Convert numpy array to PIL image
+                img_rescaled = img_rescaled.resize(new_size)  # Resize the image
+                img_rescaled = np.array(img_rescaled)
 
                 # Add back in removed white columns
-                # new_img = np.full((img_rescaled.shape[0], img_rescaled.shape[1] + 150), 251, dtype=np.uint8)
-                # new_img[:, 150:] = img_rescaled  # Place the original image on the right side of the new array
-                #
-                # plt.imsave(f'{experiment_path}/runs/{args.model}/{sample_name}', new_img, cmap='gray')
-                # print(f'[{args.experiment_name}] Saved sample as {sample_name}')
+                new_img = np.full((img_rescaled.shape[0], img_rescaled.shape[1] + 150), 251, dtype=np.uint8)
+                new_img[:, 150:] = img_rescaled  # Place the original image on the right side of the new array
+
+                plt.imsave(f'{experiment_path}/runs/{args.model}/{sample_name}', new_img, cmap='gray')
+                print(f'[{args.experiment_name}] Saved sample as {sample_name}')
     end = time.time()
     print(f'[{args.experiment_name}] Finished in {end - start} seconds')
     distribute.cleanup()
