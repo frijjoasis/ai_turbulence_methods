@@ -77,16 +77,14 @@ If not set differently, the outputs of the training (image progress, models, and
 ### DDPM
 
 The DDPM model is trainable by running `python main.py --experiment_name <name>`. `experiment_name` is the only required argument. All other parameters, such as dataset path, checkpoint path, number of epochs, batch size, etc., can be set in the `config.json` file. The parameters are explained in the file `params.py`, and can also be overridden in the command line.
-Sampling is done through running `python sample.py --experiment_name <name> --model <model> --sample_size <N>`, where `model` is the checkpoint to be loaded, and `<N>` is the desired number of samples to generate. Again, all other parameters can be set in the `config.json` file or overridden in the command line.
 
 ### VAE
 
 The VAE model can be trained by running `python vae-train.py --experiment_name <name>`. `experiment_name` is the only required argument. All other parameters, such as dataset path, checkpoint path, number of epochs, batch size, etc., can be set in the `params.json` file. The parameters are explained in the file `params.py`, and can also be overridden in the command line.
-Sampling is done through running `python vae-sample.py --experiment_name <name> --model <model> --sample_size <N>`, where `model` is the checkpoint to be loaded, and `<N>` is the desired number of samples to generate. Again, all other parameters can be set in the `params.json` file or overridden in the command line.
 
 ## How to - Using the trained models
 
-After training, the saved checkpoints can be used to generate new samples. This process is referred to as inference, which can be performed as explained below.
+After training, the saved checkpoints can be used to generate new samples. This process is referred to as inference or sampling, which can be performed as explained below.
 
 ### DCGAN 
 Run `python dcgan_inference_les.py` or `python dcgan_inference_piv.py` when the model has been trained on the LES or PIV data, respectively.
@@ -96,8 +94,10 @@ As in the case of DCGAN training, the checkpoint paths, generator models, and ot
 If not set differently, the outputs of the inference will be saved in the working directory in the folder `inference_output/experiment_name`. For models trained on the LES dataset, the outputs are a desired number of grayscale images. For models trained on the PIV dataset, the outputs consist of grayscale images for the two channels *u* and *v*, respectively, and a `.pt` file called `generated`, which contains the exact values of the generated samples.
 
 ### DDPM
+Sampling is done through running `python sample.py --experiment_name <name> --model <model> --sample_size <N>`, where `model` is the checkpoint to be loaded, and `<N>` is the desired number of samples to generate. As in the training, all other parameters can be set in the `config.json` file or overridden in the command line.
 
 ### VAE
+Sampling is done through running `python vae-sample.py --experiment_name <name> --model <model> --sample_size <N>`, where `model` is the checkpoint to be loaded, and `<N>` is the desired number of samples to generate. As in the training, all other parameters can be set in the `params.json` file or overridden in the command line.
 
 ## Evaluations
 After generating new samples with the trained models, it’s time to perform the physics-based evaluations introduced in our paper. To ensure fairness, the number of compared images should be the same for the LES/PIV, DCGAN-, DDPM-, or VAE-generated data.  
